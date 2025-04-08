@@ -270,7 +270,7 @@ squares = [x**2 for x in range(10)]  # Generates a list of squares from 0 to 9
 
 Here's a quick guide to using math in Python, including basic operations, the math module, and common mathematical functions:
 
-### Basic Arithmetic Operations
+### 1. Basic Arithmetic Operations
 You can perform basic arithmetic directly with operators.
 
 ```python
@@ -318,7 +318,7 @@ print(math.fmod(-10, 3))  #  -1.0
 result = 5 ** 3  # 125
 ```
 
-### Using the math Module
+### 2. Using the math Module
 Python's built-in math module provides access to mathematical functions.
 
 #### Importing the Module
@@ -354,7 +354,7 @@ fact_value = math.factorial(5)  # 120
 sine_value = math.sin(math.radians(30))  # 0.5
 ```
 
-### Rounding Numbers
+### 3. Rounding Numbers
 You can round numbers using built-in functions.
 
 ```python
@@ -368,7 +368,7 @@ floored = math.floor(4.6)  # 4
 ceiled = math.ceil(4.2)  # 5
 ```
 
-### Random Numbers
+### 4. Random Numbers
 For generating random numbers, use the random module.
 
 #### Example
@@ -381,7 +381,7 @@ random_float = random.random()
 # Random integer between a range
 random_int = random.randint(1, 10)  # Includes both 1 and 10
 ```
-### Infinite Values
+### 5. Infinite Values
 
 ```python
 # Max / Min Int

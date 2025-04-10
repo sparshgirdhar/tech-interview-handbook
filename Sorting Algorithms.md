@@ -92,13 +92,13 @@ def insertion_sort(arr):
     # Traverse through the array starting from the second element
     for i in range(1, n):
         key = arr[i]  # The current element to be inserted into the sorted portion
-        j = i - 1     # Index of last element in the sorted portion - j is 0 in 1st iteration
+        j = i - 1     # Index of last element in the sorted portion: j is 0 in 1st iteration
 
         # Move elements of arr[0..i-1] that are greater than key,
         # to one position ahead of their current position
         while j >= 0 and key < arr[j]:
             arr[j + 1] = arr[j]  # Shift the element to the right
-            j -= 1               # Move to the left in the sorted portion till it is at 0
+            j -= 1               # Move left to continue checking the sorted portion
 
         # Insert the key in its correct position
         arr[j + 1] = key
@@ -107,65 +107,104 @@ def insertion_sort(arr):
 ```
 
 ## 4. Merge Sort
-- Description: A divide-and-conquer algorithm that splits the list into halves, sorts each half, and merges them back together.
+Merge Sort is a `divide-and-conquer` algorithm that sorts a list by dividing it into `smaller sublists`, sorting those sublists, and then `merging` them back together. It works by `recursively` splitting the list into halves until each sublist has only one element, which is inherently sorted. Then, it merges the sorted sublists back together to produce the final sorted list.
+- Intuituin:
+    - Base Case: Check if the array has more than one element.
+    - Find `Midpoint`: Calculate the midpoint to split the array.
+    - `Recursive` Calls: Recursively call the merge sort function for both halves.
+    - `Merge` Process:
+        - Initialize pointers for both halves and the main array.
+        - Use a loop to compare and merge elements.
+        - Handle any remaining elements after the loop.
 
-- Time Complexity: O(n log n)
+- Time Complexity: `O(n log n)` The array is divided in half at each recursive step, which takes O(logn) time and merging the two halves takes O(n) at each level. Therefore, the overall time complexity is O(nlogn).
 
-- Space Complexity: O(n)
+
+- Space Complexity: `O(n)` because Merge sort requires additional space for the temporary arrays (left_half and right_half) used during the merging process
 
 ```python
 def merge_sort(arr):
+    # Base case: if the array has more than one element
     if len(arr) > 1:
+        # Find the middle index
         mid = len(arr) // 2
-        left_half = arr[:mid]
-        right_half = arr[mid:]
+        
+        # Divide the array into two halves
+        left_half = arr[:mid]   # Left half of the array
+        right_half = arr[mid:]  # Right half of the array
 
+        # Recursively sort both halves
         merge_sort(left_half)
         merge_sort(right_half)
 
+        # Pointers that tracks the current index of left_half, right_half, and main array
         i = j = k = 0
 
+        # Merge the sorted halves back into the original array
         while i < len(left_half) and j < len(right_half):
+            # Compare elements from both halves
             if left_half[i] < right_half[j]:
-                arr[k] = left_half[i]
-                i += 1
+                arr[k] = left_half[i]  # Place smaller element in the original array
+                i += 1  # Move to the next element in left_half
             else:
-                arr[k] = right_half[j]
-                j += 1
-            k += 1
+                arr[k] = right_half[j]  # Place smaller element in the original array
+                j += 1  # Move to the next element in right_half
+            k += 1  # Move to the next position in the original array
 
+        # If there are remaining elements in left_half, add them to arr
         while i < len(left_half):
-            arr[k] = left_half[i]
+            arr[k] = left_half[i]  # Copy remaining elements
             i += 1
             k += 1
 
+        # If there are remaining elements in right_half, add them to arr
         while j < len(right_half):
-            arr[k] = right_half[j]
+            arr[k] = right_half[j]  # Copy remaining elements
             j += 1
             k += 1
-    return arr
+            
+    return arr  # Return the sorted array
 ```
 
 ## 5. Quick Sort
-- Description: A divide-and-conquer algorithm that selects a "pivot" element, partitions the array around the pivot, and recursively sorts the sub-arrays.
+Quick Sort is also a Divide and Conquer algorithm like Merge Sort, but it works differently in how it splits and combines data. It works by selecting a `pivot` element from the list and partitioning the other elements into two sub-arrays: those less than the pivot and those greater than the pivot. 
+- Intuition:
+    - Pick a `pivot` element from the array.
+    - `Partition` the array:
+        - Move all elements smaller than the pivot to its left,
+        - Move all elements greater than the pivot to its right.
+    - Now, the pivot is in its correct final position.
+    - `Recursively` sort the left and right parts.
 
 - Time Complexity:
 
-  - Best: O(n log n)
+  - Best: `O(n log n)`
 
-  - Average: O(n log n)
+  - Average: `O(n log n)`
 
-  - Worst: O(n²) (rare, with poor pivot choices)
+  - Worst: `O(n²)` (rare, with poor pivot choices)
 
-- Space Complexity: O(log n) (due to recursion)
+- Space Complexity: `O(log n)` (due to recursion)
 
 ```python
 def quick_sort(arr):
+    # Base case: If the array has 0 or 1 elements, it's already sorted
     if len(arr) <= 1:
-        return arr
+        return arr  # Return the array as is
+
+    # Choose the pivot element (middle element in this case)
     pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
+
+    # Create a list of elements using list comprehension
+    # less than the pivot
+    left = [x for x in arr if x < pivot]    
+
+    # equal to the pivot
+    middle = [x for x in arr if x == pivot] 
+
+    # greater than the pivot
     right = [x for x in arr if x > pivot]
+
+    # Recursively sort the left and right parts, and concatenate the results
     return quick_sort(left) + middle + quick_sort(right)
-```
+``` 

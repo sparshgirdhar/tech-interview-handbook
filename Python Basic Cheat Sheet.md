@@ -48,7 +48,10 @@ PI = 3.14159
 You can check the type of a variable using the type() function.
 
 ```python
-print(type(x))  # Outputs: <class 'str'> (if x is a string)
+# if x is a string
+print(type(x))
+
+# Outputs: <class 'str'>
 ```
 
 ### 7. Updating Variables

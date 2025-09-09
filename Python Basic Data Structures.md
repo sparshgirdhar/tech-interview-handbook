@@ -30,8 +30,8 @@ arr = [1, 2, 3]  # Create a list
 
 ```python
 first_elem = arr[0]  # First element
-last_elem = arr[-1]  # Last element
-```
+last_elem = arr[-1]  # Last element. Or arr[n-1] where n = len(arr)
+ ```
 
 - Modifying Elements: Directly change the value of an existing index.
 

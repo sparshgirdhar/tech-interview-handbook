@@ -262,7 +262,8 @@ You can use loops inside other loops.
 ```python
 for i in range(3):
     for j in range(2):
-        print("i: {i}, j: {j}")
+        print(f"i: {i}, j: {j}")
+# Values are printed using f-strings (Python 3.6+)
 ```
 
 ### 5. List Comprehensions

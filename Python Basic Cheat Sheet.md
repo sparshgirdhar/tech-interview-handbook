@@ -202,9 +202,14 @@ for i in range(5):
 for i in range(2, 6):
     print(i)
 
-# Looping from i = 5 to i = 2
+# Loop over numbers from 5 down to (but not including) 0, stepping by -2.
 for i in range(5, 1, -1):
     print(i)
+
+# Output:
+# 5
+# 3
+# 1
 ```
 
 ### 2. While Loops

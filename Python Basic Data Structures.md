@@ -10,9 +10,9 @@ In Python, arrays are referred to as lists. They are versatile and allow for var
 
 - Access: `O(1)`
 
-- Insertion: `O(1)` on average (append), `O(N)` (at index)
+- Insertion: `O(1)` on average (append at end), `O(N)` (at index)
 
-- Deletion: `O(1)` (pop), `O(N)` (remove by value)
+- Deletion: `O(1)` (pop from end), `O(N)` (remove by value)
 
 - Search: `O(N)`
 
